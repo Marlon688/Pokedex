@@ -1,0 +1,123 @@
+:root {
+  --type-grass: rgb(47, 250, 68);
+  --type-fire: rgb(243, 32, 32);
+  --type-water: rgb(17, 179, 238);
+  --type-electric: rgb(237, 226, 11);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  width: 100%;
+  padding: 80px 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  font-size: 26px;
+}
+
+.searchFrom {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 2px;
+}
+
+.searchFrom input,
+.searchFrom button {
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.header img {
+  width: 60px;
+  height: 60px;
+}
+
+#cardList {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 40px;
+  max-width: 1440px;
+  margin-inline: auto;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  text-align: left;
+}
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: contain;
+}
+
+.card.type-grass {
+  background: var(--type-grass);
+}
+.card.type-fire {
+  background: var(--type-fire);
+}
+.card.type-water {
+  background: var(--type-water);
+}
+.card.type-electric {
+  background: var(--type-electric);
+}
+
+[data-id="load-more-button"] {
+  display: block;
+  margin: 32px auto;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.typeList {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.typePill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.cardId {
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+.cardName {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.card:hover {
+  transform: translate(-40px);
+  transition: transform 0.2s;
+}
