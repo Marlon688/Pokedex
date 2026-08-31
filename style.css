@@ -1,8 +1,22 @@
 :root {
-  --type-grass: rgb(47, 250, 68);
-  --type-fire: rgb(243, 32, 32);
-  --type-water: rgb(17, 179, 238);
-  --type-electric: rgb(237, 226, 11);
+  --type-normal: rgb(168, 168, 122);
+  --type-grass: rgb(122, 199, 76);
+  --type-fire: rgb(238, 129, 48);
+  --type-water: rgb(130, 196, 220);
+  --type-electric: rgb(247, 208, 44);
+  --type-ice: rgb(150, 217, 214);
+  --type-fighting: rgb(194, 46, 40);
+  --type-poison: rgb(163, 62, 161);
+  --type-ground: rgb(226, 191, 101);
+  --type-flying: rgb(169, 143, 243);
+  --type-psychic: rgb(249, 85, 135);
+  --type-bug: rgb(166, 185, 26);
+  --type-rock: rgb(182, 161, 54);
+  --type-ghost: rgb(115, 87, 151);
+  --type-dragon: rgb(111, 53, 252);
+  --type-dark: rgb(112, 87, 70);
+  --type-steel: rgb(183, 183, 206);
+  --type-fairy: rgb(214, 133, 173);
 }
 
 * {
@@ -12,7 +26,8 @@
 }
 
 .header {
-  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
   padding: 80px 120px;
   display: flex;
   justify-content: space-between;
@@ -68,12 +83,14 @@
   cursor: pointer;
   text-align: left;
 }
-.card img {
+.card > img {
   width: 100%;
   height: 140px;
   object-fit: contain;
 }
-
+.card.type-normal {
+  background-color: var(--type-normal);
+}
 .card.type-grass {
   background: var(--type-grass);
 }
@@ -85,6 +102,50 @@
 }
 .card.type-electric {
   background: var(--type-electric);
+}
+.card.type-ice {
+  background-color: var(--type-ice);
+}
+.card.type-fighting {
+  background-color: var(--type-fighting);
+}
+.card.type-poison {
+  background-color: var(--type-poison);
+}
+.card.type-ground {
+  background-color: var(--type-ground);
+}
+.card.type-flying {
+  background-color: var(--type-flying);
+}
+.card.type-psychic {
+  background-color: var(--type-psychic);
+}
+.card.type-bug {
+  background-color: var(--type-bug);
+}
+.card.type-rock {
+  background-color: var(--type-rock);
+}
+.card.type-ghost {
+  background-color: var(--type-ghost);
+}
+.card.type-dragon {
+  background-color: var(--type-dragon);
+}
+.card.type-dark {
+  background-color: var(--type-dark);
+}
+.card.type-steel {
+  background-color: var(--type-steel);
+}
+.card.type-fairy {
+  background-color: var(--type-fairy);
+}
+
+.typeIcon {
+  width: 32px;
+  height: 32px;
 }
 
 [data-id="load-more-button"] {
@@ -114,6 +175,7 @@
   opacity: 0.75;
 }
 .cardName {
+  text-transform: capitalize;
   font-size: 1.2rem;
   font-weight: 700;
 }
