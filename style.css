@@ -25,6 +25,14 @@
   box-sizing: border-box;
 }
 
+body {
+  background-image: url("./assets/img/pokedex-wallpapers.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
 .header {
   max-width: 1440px;
   margin-inline: auto;
@@ -52,7 +60,7 @@
 .searchFrom input,
 .searchFrom button {
   padding: 12px 16px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   border-radius: 6px;
   border: 2px solid rgb(0, 0, 0);
 }
@@ -88,58 +96,58 @@
   height: 140px;
   object-fit: contain;
 }
-.card.type-normal {
+.type-normal {
   background-color: var(--type-normal);
 }
-.card.type-grass {
+.type-grass {
   background: var(--type-grass);
 }
-.card.type-fire {
+.type-fire {
   background: var(--type-fire);
 }
-.card.type-water {
+.type-water {
   background: var(--type-water);
 }
-.card.type-electric {
+.type-electric {
   background: var(--type-electric);
 }
-.card.type-ice {
+.type-ice {
   background-color: var(--type-ice);
 }
-.card.type-fighting {
+.type-fighting {
   background-color: var(--type-fighting);
 }
-.card.type-poison {
+.type-poison {
   background-color: var(--type-poison);
 }
-.card.type-ground {
+.type-ground {
   background-color: var(--type-ground);
 }
-.card.type-flying {
+.type-flying {
   background-color: var(--type-flying);
 }
-.card.type-psychic {
+.type-psychic {
   background-color: var(--type-psychic);
 }
-.card.type-bug {
+.type-bug {
   background-color: var(--type-bug);
 }
-.card.type-rock {
+.type-rock {
   background-color: var(--type-rock);
 }
-.card.type-ghost {
+.type-ghost {
   background-color: var(--type-ghost);
 }
-.card.type-dragon {
+.type-dragon {
   background-color: var(--type-dragon);
 }
-.card.type-dark {
+.type-dark {
   background-color: var(--type-dark);
 }
-.card.type-steel {
+.type-steel {
   background-color: var(--type-steel);
 }
-.card.type-fairy {
+.type-fairy {
   background-color: var(--type-fairy);
 }
 
@@ -150,13 +158,46 @@
 
 [data-id="load-more-button"] {
   display: block;
-  margin: 32px auto;
+  margin: 64px auto;
+  padding: 12px 32px;
   border: none;
   border-radius: 999px;
   font-size: 1rem;
   cursor: pointer;
 }
+.loadingScreen {
+  font-size: 24px;
+  font-weight: bold;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  z-index: 10;
+}
 
+.loadingScreen img {
+  height: 80px;
+  width: 80px;
+  animation: spin 1s linear infinite;
+}
+
+.loadingScreen.hidden {
+  display: none;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 .typeList {
   display: flex;
   gap: 6px;
@@ -180,6 +221,116 @@
   font-weight: 700;
 }
 .card:hover {
-  transform: translate(-40px);
+  transform: scale(1.1);
   transition: transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.dialog {
+  margin: auto;
+  border: none;
+  border-radius: 16px;
+  padding: 0;
+  max-width: 500px;
+  width: 90vw;
+}
+
+.dialogName {
+  font-size: 2rem;
+  text-transform: capitalize;
+}
+#dialogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dialogId {
+  font-size: 1.5rem;
+  opacity: 0.7;
+  font-weight: bold;
+}
+.dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+[data-id="overlay-pokemon-name"] {
+  position: relative;
+  padding: 0;
+}
+
+.dialogInner {
+  padding: 24px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+[data-id="dialog-image"] {
+  width: 100%;
+  height: 220px;
+  object-fit: contain;
+}
+[data-id="prev-button"],
+[data-id="next-button"] {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+[data-id="prev-button"] {
+  left: 32px;
+}
+
+[data-id="next-button"] {
+  right: 32px;
+}
+
+[data-id="close-dialog-button"] {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* // === Search === */
+
+.notFound {
+  text-align: center;
+  padding: 32px;
+  font-size: 2rem;
+}
+
+.searchFrom {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  gap: 2px;
+}
+
+.searchHint {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 4px 0 0 101px;
+  color: red;
+  font-size: 1.2rem;
+}
+.searchHint.hidden {
+  display: none;
 }

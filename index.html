@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body onload="init()">
+    <div id="loadingScreen" class="loadingScreen">
+      <img src="./assets/icons/favicon.png" alt="" />
+      <p>Loading...</p>
+    </div>
     <header class="header">
       <div class="logo">
         <h1>Pokedex</h1>
@@ -18,11 +22,19 @@
         <input
           type="text"
           data-id="search-input"
+          oninput="checkSearchInput()"
           placeholder="Search Pokemon"
           aria-label="Search Pokemon"
           minlength="3"
         />
-        <button data-id="search-button" aria-label="Search">Search</button>
+        <button
+          data-id="search-button"
+          onclick="searchPokemon()"
+          aria-label="Search"
+        >
+          Search
+        </button>
+        <p id="searchHint" class="searchHint hidden">min 3 letters</p>
       </div>
     </header>
 
@@ -38,14 +50,35 @@
       Load More
     </button>
 
-    <dialog data-id="dialog" aria-label="Pokemon details">
-      <div data-id="overlay-pokemon-name">
-        <button data-id="close-dialog-button" aria-label="Close">
+    <dialog
+      class="dialog"
+      data-id="dialog"
+      onclick="closeDialog()"
+      aria-label="Pokemon details"
+    >
+      <div data-id="overlay-pokemon-name" onclick="event.stopPropagation()">
+        <button
+          data-id="close-dialog-button"
+          onclick="closeDialog()"
+          aria-label="Close"
+        >
           &times;
         </button>
-        <img data-id="dialog-image" src="" alt="" />
-        <button data-id="prev-button" aria-label="Previous">&lsaquo;</button>
-        <button data-id="next-button" aria-label="Next">&rsaquo;</button>
+        <div id="dialogContent"></div>
+        <button
+          data-id="prev-button"
+          onclick="changePokemon(-1)"
+          aria-label="Previous"
+        >
+          &lsaquo;
+        </button>
+        <button
+          data-id="next-button"
+          onclick="changePokemon(1)"
+          aria-label="Next"
+        >
+          &rsaquo;
+        </button>
       </div>
     </dialog>
 
