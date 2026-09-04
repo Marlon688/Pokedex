@@ -92,6 +92,7 @@ body {
   text-align: left;
 }
 .card > img {
+  margin-top: 30px;
   width: 100%;
   height: 140px;
   object-fit: contain;
@@ -212,10 +213,13 @@ body {
 }
 
 .cardId {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
   opacity: 0.75;
+  position: absolute;
 }
 .cardName {
+  margin-top: 10px;
   text-transform: capitalize;
   font-size: 1.2rem;
   font-weight: 700;
@@ -333,4 +337,80 @@ body {
 }
 .searchHint.hidden {
   display: none;
+}
+
+.tabList {
+  display: flex;
+  gap: 4px;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+.tabButton.active {
+  background: rgba(255, 255, 255, 0.9);
+  font-weight: 700;
+}
+
+.statRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.statName {
+  width: 120px;
+  font-size: 0.85rem;
+}
+
+.statBar {
+  flex: 1;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.statFill {
+  display: block;
+  height: 100%;
+  background: rgb(220, 60, 60);
+}
+
+/*  ===EvoChain  === */
+
+.evoChain {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.evoStage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.evoStage img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.evoName {
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.evoArrow {
+  font-size: 1.5rem;
+}
+#evoContent > img {
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
 }

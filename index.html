@@ -23,6 +23,7 @@
           type="text"
           data-id="search-input"
           oninput="checkSearchInput()"
+          onkeydown="if (event.key === 'Enter') searchPokemon();"
           placeholder="Search Pokemon"
           aria-label="Search Pokemon"
           minlength="3"
