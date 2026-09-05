@@ -1,4 +1,6 @@
-// === Global Variables ===
+/*==============================
+global Variables
+=========================*/
 
 let allPokemon = [];
 let currentOffset = 0;
@@ -7,7 +9,9 @@ let currentTab = "main";
 let evolutionCache = {};
 const LIMIT = 20;
 
-// === Init ===
+/*==============================
+Init
+=========================*/
 
 async function init() {
   toggleLoadingScreen(true);
@@ -16,7 +20,9 @@ async function init() {
   toggleLoadingScreen(false);
 }
 
-// === API ===
+/*==============================
+API
+=========================*/
 
 async function loadPokemonDetails(id) {
   let url = `https://pokeapi.co/api/v2/pokemon/${id}`;
@@ -40,6 +46,7 @@ function getIdFromUrl(url) {
   let parts = url.split("/");
   return parts[parts.length - 2];
 }
+
 async function getEvolutionChain(pokemonId) {
   if (evolutionCache[pokemonId]) {
     return evolutionCache[pokemonId];
@@ -69,7 +76,9 @@ async function loadMorePokemon() {
   buttonRef.disabled = false;
 }
 
-// === Rendern ===
+/*==============================
+Render
+=========================*/
 
 function renderPokemonCards(pokemonList) {
   let cardListRef = document.getElementById("cardList");
@@ -79,7 +88,9 @@ function renderPokemonCards(pokemonList) {
   }
 }
 
-// === Templates ===
+/*==============================
+Templates
+=========================*/
 
 function getPokemonCardTemplate(pokemon) {
   let mainType = pokemon.types[0].type.name;
@@ -216,7 +227,9 @@ function getStatsTemplate(stats) {
   return rows;
 }
 
-// === Dialog ===
+/*==============================
+Dialog
+=========================*/
 
 async function openDialog(pokemonId) {
   currentPokemonIndex = allPokemon.findIndex(
@@ -254,14 +267,18 @@ async function changePokemon(direction) {
   }
 }
 
-// === Loadingscreen ===
+/*==============================
+Loadingscreen
+=========================*/
 
 function toggleLoadingScreen(isVisible) {
   let loadingRef = document.getElementById("loadingScreen");
   loadingRef.classList.toggle("hidden", !isVisible);
 }
 
-// === Search ===
+/*==============================
+Search
+=========================*/
 
 function searchPokemon() {
   let inputRef = document.querySelector(`[data-id="search-input"]`);

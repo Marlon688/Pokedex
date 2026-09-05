@@ -1,3 +1,7 @@
+/*==============================
+variables
+=========================*/
+
 :root {
   --type-normal: rgb(168, 168, 122);
   --type-grass: rgb(122, 199, 76);
@@ -19,6 +23,10 @@
   --type-fairy: rgb(214, 133, 173);
 }
 
+/*==============================
+Reset & Body
+=========================*/
+
 * {
   margin: 0;
   padding: 0;
@@ -33,6 +41,11 @@ body {
   background-attachment: fixed;
   min-height: 100vh;
 }
+
+/*==============================
+Header
+=========================*/
+
 .header {
   max-width: 1440px;
   margin-inline: auto;
@@ -50,13 +63,6 @@ body {
   font-size: 26px;
 }
 
-.searchFrom {
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-  gap: 2px;
-}
-
 .searchFrom input,
 .searchFrom button {
   padding: 12px 16px;
@@ -69,6 +75,10 @@ body {
   width: 60px;
   height: 60px;
 }
+
+/*==============================
+Card-Grid
+=========================*/
 
 #cardList {
   list-style: none;
@@ -97,6 +107,30 @@ body {
   height: 140px;
   object-fit: contain;
 }
+
+.cardId {
+  font-size: 0.95rem;
+  font-weight: 600;
+  opacity: 0.75;
+  position: absolute;
+}
+.cardName {
+  margin-top: 10px;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.card:hover {
+  transform: scale(1.1);
+  transition: transform 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+/*==============================
+Typecolor
+=========================*/
+
 .type-normal {
   background-color: var(--type-normal);
 }
@@ -152,10 +186,30 @@ body {
   background-color: var(--type-fairy);
 }
 
+/*==============================
+Type-Icons
+=========================*/
+
 .typeIcon {
   width: 32px;
   height: 32px;
 }
+
+.typeList {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.typePill {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.8);
+}
+/*==============================
+Load More
+=========================*/
 
 [data-id="load-more-button"] {
   display: block;
@@ -166,6 +220,11 @@ body {
   font-size: 1rem;
   cursor: pointer;
 }
+
+/*==============================
+Loadingscreen
+=========================*/
+
 .loadingScreen {
   font-size: 24px;
   font-weight: bold;
@@ -177,7 +236,7 @@ body {
   align-items: center;
   text-align: center;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.4);
   z-index: 10;
 }
 
@@ -199,37 +258,10 @@ body {
     transform: rotate(360deg);
   }
 }
-.typeList {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-}
 
-.typePill {
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  background: rgba(255, 255, 255, 0.8);
-}
-
-.cardId {
-  font-size: 0.95rem;
-  font-weight: 600;
-  opacity: 0.75;
-  position: absolute;
-}
-.cardName {
-  margin-top: 10px;
-  text-transform: capitalize;
-  font-size: 1.2rem;
-  font-weight: 700;
-}
-.card:hover {
-  transform: scale(1.1);
-  transition: transform 0.2s;
-  position: relative;
-  z-index: 1;
-}
+/*==============================
+Dialog
+=========================*/
 
 .dialog {
   margin: auto;
@@ -258,6 +290,7 @@ body {
 .dialog::backdrop {
   background: rgba(0, 0, 0, 0.6);
 }
+
 [data-id="overlay-pokemon-name"] {
   position: relative;
   padding: 0;
@@ -311,7 +344,9 @@ body {
   z-index: 2;
 }
 
-/* // === Search === */
+/*==============================
+Dialog
+=========================*/
 
 .notFound {
   text-align: center;
@@ -338,6 +373,10 @@ body {
 .searchHint.hidden {
   display: none;
 }
+
+/*==============================
+Tabs
+=========================*/
 
 .tabList {
   display: flex;
@@ -381,7 +420,7 @@ body {
   background: rgb(220, 60, 60);
 }
 
-/*  ===EvoChain  === */
+/*  ===Evolution  === */
 
 .evoChain {
   display: flex;
@@ -413,4 +452,117 @@ body {
   width: 40px;
   height: 40px;
   animation: spin 1s linear infinite;
+}
+
+/*==============================
+Footer
+=========================*/
+
+.footer {
+  text-align: center;
+  padding: 24px;
+  font-size: 1rem;
+}
+
+/*==============================
+Media Querries 1280px
+=========================*/
+
+@media (max-width: 1280px) {
+  .header {
+    padding: 40px 60px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .header img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .searchFrom input,
+  .searchFrom button {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+  #cardList {
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    padding: 0 24px;
+  }
+}
+
+/*==============================
+Media Querries 768px
+=========================*/
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    gap: 16px;
+  }
+  #cardList {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    padding: 0 16px;
+  }
+  .card > img {
+    height: 100px;
+  }
+  .typeIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .cardName {
+    font-size: 1rem;
+  }
+}
+
+/*==============================
+Media Querries 420px
+
+=========================*/
+
+@media (max-width: 420px) {
+  .header {
+    padding: 16px 12px;
+  }
+  .searchFrom input,
+  .searchFrom button {
+    padding: 6px 10px;
+    font-size: 0.6rem;
+  }
+
+  .logo {
+    font-size: 16px;
+  }
+
+  .header img {
+    width: 30px;
+    height: 30px;
+  }
+
+  #cardList {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    padding: 0 12px;
+  }
+  .card > img {
+    height: 80px;
+  }
+  [data-id="dialog-image"] {
+    height: 180px;
+  }
+
+  [data-id="prev-button"],
+  [data-id="next-button"] {
+    width: 30px;
+    height: 30px;
+  }
+
+  .evoStage img {
+    width: 55px;
+    height: 55px;
+    object-fit: contain;
+  }
 }
